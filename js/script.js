@@ -1,24 +1,22 @@
-$(document).ready(function () {
-  const colorThief = new ColorThief();
-  const img = document.querySelector("img");
-  var parent = document.getElementsByClassName("wrapper");
-  // Make sure image is finished loading
-  if (img.complete) {
-    colorThief.getColor(img);
-    console.log(colorThief.getColor(img));
-    var rgbColor0 = colorThief.getColor(img)[0];
-    var rgbColor1 = colorThief.getColor(img)[1];
-    var rgbColor2 = colorThief.getColor(img)[2];
-    var rgba1 = `rgba(${rgbColor0},${rgbColor1},${rgbColor2},1)`;
-    var rgba2 = `rgba(${rgbColor0},${rgbColor1},${rgbColor2},1)`;
-    document.querySelector('.wrapper').setAttribute('style',`background:${rgba1};`);
-    document.querySelector('img').setAttribute('style',`filter:drop-shadow(.5rem .5rem 1rem ${rgba2});`);
-    
-   // parent.setAttribute('style','color:red;');
-  } else {
-    image.addEventListener("load", function () {
-      colorThief.getColor(img);
-      console.log(colorThief.getColor(img));
-    });
+const colorThief = new ColorThief();
+const img = document.querySelector('img');
+
+var palette = [];
+$(window).on("load", function () {
+  var sourceImage = $("img");
+  for (i = 0; i < sourceImage.length; i++) {
+      palette.push(colorThief.getPalette(sourceImage[i], 4));
   }
+  sourceImage.parent(".card").each(function (index) {
+    $(this).children("h1").css("color","rgba(" + palette[index][2] + ", 1)")
+    $(this).children("p").css("color","rgba(" + palette[index][2] + ", 1)")
+      $(this).css(
+          "box-shadow",
+          "0 8px 20px -1px rgba(" + palette[index][0] + ", 1)"
+      );
+      $(this).css(
+          "background",
+          "rgba(" + palette[index][0] + ", 1)"
+      );
+  });
 });

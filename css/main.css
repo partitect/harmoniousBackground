@@ -1,8 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap");
 body {
-  overflow: hidden;
+  font-family: 'Rajdhani', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 50px 20px;
+  width: 600;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.wrapper .card {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,40 +35,34 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 20px;
-  width: 600;
-  height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  margin: 20px;
+  -webkit-box-flex: 2;
+      -ms-flex: 2 0 21%;
+          flex: 2 0 21%;
 }
 
-.wrapper .rr {
-  position: relative;
-  width: 300px;
-  height: 500px;
-  border-radius: 20px;
-}
-
-.wrapper .rr:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+.wrapper .card img {
   width: 100%;
-  background: -webkit-gradient(linear, left top, right top, from(#363ea8), color-stop(#327bd8), to(#59bfd7));
-  background: linear-gradient(90deg, #363ea8, #327bd8, #59bfd7);
-  -webkit-filter: blur(20px);
-          filter: blur(20px);
-  border-radius: 20px;
-  z-index: -1;
-  -webkit-transform: rotate(15deg);
-          transform: rotate(15deg);
-}
-
-.wrapper img {
-  width: 300px;
-  height: 500px;
+  height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.wrapper .card h1 {
+  font-size: 2em;
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 /*# sourceMappingURL=main.css.map */
