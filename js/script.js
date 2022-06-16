@@ -20,3 +20,13 @@ $(window).on("load", function () {
       );
   });
 });
+$(".card").on("click",function(){
+  if($(this).hasClass("fullscreen")){
+    $(this).css("margin","20px").removeClass("fullscreen");
+    $("body").css("overflow","auto")
+  }
+  else{
+    $(this).addClass("fullscreen").css("margin","0");
+    $("body").css("overflow","hidden")
+  }
+})

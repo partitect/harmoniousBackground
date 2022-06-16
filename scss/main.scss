@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap');
+body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
 body {
   font-family: 'Rajdhani', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -9,21 +10,32 @@ body {
   align-items: flex-start;
   justify-content: space-evenly;
   flex-direction: row;
-  padding:50px 20px;
-  width: 600;
+  width: 100%;
 
   flex-wrap: wrap;
   .card {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     border-radius: 10px;
-    padding-bottom: 20px;
-    transition: all 0.2s ease;
     margin: 20px;
+    transition: all 0.5s ease;
+    padding-bottom: 20px;
     flex: 2 0 21%; 
-    
+
+    &.fullscreen{
+
+      animation: animateThis 0.5s ease;
+      animation-fill-mode:both;
+
+      border-radius: 0;
+      img {
+        border-radius: 0;
+        height: 500px;
+      }
+    }
     img {
       width: 100%;
       height: 300px;
@@ -38,5 +50,18 @@ body {
       margin-bottom: 10px;
       text-transform: uppercase;
     }
+  }
+}
+
+@keyframes animateThis {
+  0% {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
 }
