@@ -3,7 +3,7 @@ const img = document.querySelector('img');
 
 var palette = [];
 $(window).on("load", function () {
-  var sourceImage = $("img");
+  var sourceImage = $(".card img");
   for (i = 0; i < sourceImage.length; i++) {
       palette.push(colorThief.getPalette(sourceImage[i], 4));
   }
@@ -20,13 +20,32 @@ $(window).on("load", function () {
       );
   });
 });
-$(".card").on("click",function(){
-  if($(this).hasClass("fullscreen")){
-    $(this).css("margin","20px").removeClass("fullscreen");
-    $("body").css("overflow","auto")
-  }
-  else{
-    $(this).addClass("fullscreen").css("margin","0");
-    $("body").css("overflow","hidden")
-  }
-})
+
+const fetchImageData = (imageUrl) => {
+	fetch(imageUrl)
+		.then(function(response) {
+			return response.blob();
+		})
+		.then(function(myBlob) {
+			const reader = new FileReader();
+			reader.readAsDataURL(myBlob); 
+			reader.onloadend = function() {
+				const base64data = reader.result;
+				getColorAndSet(base64data);
+			 }
+		});
+};
+
+function getBaseUrl ()  {
+  var file = document.querySelector('input[type=file]')['files'][0];
+  var reader = new FileReader();
+  var baseString;
+  reader.onloadend = function () {
+      baseString = reader.result;
+      $("#img").attr("src",baseString);
+      var $img = $("#img");
+     var palette = colorThief.getPalette($img, 4)
+     console.log(palette)
+  };
+  reader.readAsDataURL(file);
+}
